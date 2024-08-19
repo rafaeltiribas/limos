@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<nodes>
+  <node>
+    <no-name>19/08/2024</no-name>
+    <Tipo-de-refei-o>Almoço</Tipo-de-refei-o>
+    <Prato-principal>Empanado de frango</Prato-principal>
+    <Guarni-o>Cenoura à Grega</Guarni-o>
+    <Acompanhamentos>Arroz e Feijão Vermelho</Acompanhamentos>
+    <Salada-1>Repolho-roxo</Salada-1>
+    <Salada-2>Pepino</Salada-2>
+    <Sobremesa>Fruta</Sobremesa>
+    <Refresco></Refresco>
+    <Observa-es></Observa-es>
+    <Imagem></Imagem>
+  </node>
+  <node>
+    <no-name>19/08/2024</no-name>
+    <Tipo-de-refei-o>Jantar</Tipo-de-refei-o>
+    <Prato-principal>Empanado de frango</Prato-principal>
+    <Guarni-o>Cenoura à Grega</Guarni-o>
+    <Acompanhamentos>Arroz e Feijão Vermelho</Acompanhamentos>
+    <Salada-1>Repolho-roxo</Salada-1>
+    <Salada-2>Pepino</Salada-2>
+    <Sobremesa>Fruta</Sobremesa>
+    <Refresco></Refresco>
+    <Observa-es></Observa-es>
+    <Imagem></Imagem>
+  </node>
+</nodes>
