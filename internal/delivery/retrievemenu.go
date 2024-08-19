@@ -1,4 +1,4 @@
-package main
+package delivery
 
 import (
 	"encoding/xml"
@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func main() {
+func RetrieveMenu() {
 	resp, err := http.Get("https://www.restaurante.uff.br/cardapiomobile.xml")
 	if err != nil {
 		fmt.Println(err)
@@ -32,5 +32,4 @@ func main() {
 	for _, refeicao := range cardapio.Refeicoes {
 		fmt.Println(refeicao)
 	}
-
 }
