@@ -2,11 +2,11 @@ package delivery
 
 import (
 	"fmt"
+	"github.com/rafaeltiribas/cardapio-uff/internal/usecase"
 )
 
 func Menu() {
 	cardapio := retrieveMenu()
-	for _, refeicao := range cardapio.Refeicoes {
-		fmt.Println(formatCardapio(refeicao))
-	}
+	mensagem := usecase.CreateMessage(cardapio)
+	fmt.Println(mensagem)
 }
