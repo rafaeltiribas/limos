@@ -8,28 +8,26 @@ import (
 	"net/http"
 )
 
-func RetrieveMenu() {
+func retrieveMenu() models.Cardapio {
 	resp, err := http.Get("https://www.restaurante.uff.br/cardapiomobile.xml")
 	if err != nil {
 		fmt.Println(err)
-		return
+		return models.Cardapio{}
 	}
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		fmt.Println(err)
-		return
+		return models.Cardapio{}
 	}
 
 	var cardapio models.Cardapio
 	err = xml.Unmarshal(body, &cardapio)
 	if err != nil {
 		fmt.Println(err)
-		return
+		return models.Cardapio{}
 	}
 
-	for _, refeicao := range cardapio.Refeicoes {
-		fmt.Println(refeicao)
-	}
+	return cardapio
 }
