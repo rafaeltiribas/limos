@@ -26,7 +26,7 @@ func FormatCardapio(refeicao models.Refeicao) string {
 	sb.WriteString(fmt.Sprintf("- %s\n", refeicao.Salada2))
 
 	sb.WriteString("🍫 Sobremesa:\n")
-	sb.WriteString(fmt.Sprintf("- %s\n", refeicao.Sobremesa))
+	sb.WriteString(fmt.Sprintf("- %s\n\n", refeicao.Sobremesa))
 
 	return sb.String()
 }

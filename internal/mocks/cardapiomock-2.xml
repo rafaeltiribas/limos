@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<nodes>
+  <node>
+    <no-name>20/08/2024</no-name>
+    <Tipo-de-refei-o>Almoço</Tipo-de-refei-o>
+    <Prato-principal>Frango ao molho mostarda</Prato-principal>
+    <Guarni-o>Batata ao vapor</Guarni-o>
+    <Acompanhamentos>Arroz e Feijão preto</Acompanhamentos>
+    <Salada-1>Tomate</Salada-1>
+    <Salada-2>Acelga</Salada-2>
+    <Sobremesa>Fruta (Gragoatá) / Doce (Externos)</Sobremesa>
+    <Refresco></Refresco>
+    <Observa-es></Observa-es>
+    <Imagem></Imagem>
+  </node>
+</nodes>
