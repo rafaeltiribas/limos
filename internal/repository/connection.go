@@ -79,6 +79,37 @@ func UserExists(userID int64) (bool, int64, error) {
 	return true, existingID, nil
 }
 
+func UpdateLastUseDate(chatID int64) error {
+	connection, err := OpenConnection()
+	if err != nil {
+		log.Printf("Open connection error: %s\n", err)
+	}
+	defer connection.Close()
+
+	var lastUseDate time.Time
+	sqlStatement := "SELECT lastuse_date FROM chatuser WHERE user_id = $1"
+	err = connection.QueryRow(sqlStatement, chatID).Scan(&lastUseDate)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Printf("User not found: %s\n", err)
+			return err
+		}
+		log.Printf("Select error: %s\n", err)
+		return err
+	}
+
+	now := time.Now()
+	sqlStatement = "UPDATE chatuser SET lastuse_date = $1 WHERE user_id = $2"
+	_, err = connection.Exec(sqlStatement, now, chatID)
+	if err != nil {
+		log.Printf("Update last use date error: %s\n", err)
+		return err
+	}
+
+	log.Printf("Updated lastuse_date for user_id: %d\n", chatID)
+	return nil
+}
+
 func NewUser(chatID int64) {
 	now := time.Now()
 	user := models.User{UserID: chatID, RegisterDate: now, LastUseDate: now}

@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"fmt"
 	"github.com/rafaeltiribas/cardapio-uff/internal/repository"
 )
 
@@ -21,6 +22,10 @@ func Command(command string, chatID int64) string {
 			"🏠 /start - Mostra a mensagem de boas-vindas e os comandos principais\n\n" +
 			"Se precisar de mais alguma coisa, é só perguntar!")
 	case "cardapio":
+		err := repository.UpdateLastUseDate(chatID)
+		if err != nil {
+			fmt.Println("Error updating Last Use Date")
+		}
 		return Menu()
 	case "horarios":
 		return EscapeMarkdown("🕒 Horários de funcionamento do RU da UFF:\n\n" +
