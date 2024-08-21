@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"time"
 )
@@ -36,4 +37,14 @@ func DeleteFile() {
 	err := os.Remove("../../internal/usecase/temp/tempcardapio")
 	check(err)
 
+}
+
+func GetFileContent() string {
+	response, err := os.ReadFile("../../internal/usecase/temp/tempcardapio")
+	if err != nil {
+		log.Fatal(err)
+	}
+	mensagem := string(response)
+
+	return mensagem
 }

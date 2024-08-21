@@ -1,4 +1,4 @@
-package delivery
+package usecase
 
 import (
 	"encoding/xml"
@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func retrieveMenu() models.Cardapio {
+func RetrieveMenu() models.Cardapio {
 	resp, err := http.Get("https://www.restaurante.uff.br/cardapiomobile.xml")
 	if err != nil {
 		fmt.Println(err)
