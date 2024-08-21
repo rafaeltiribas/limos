@@ -2,13 +2,14 @@ package usecase
 
 import (
 	"github.com/joho/godotenv"
+	"github.com/rafaeltiribas/cardapio-uff/internal/config"
 	"log"
 	"os"
 	"path/filepath"
 )
 
 func RetrieveToken(tokenKey string) string {
-	envPath, err := filepath.Abs("../../.env")
+	envPath, err := filepath.Abs(config.EnvPath)
 	if err != nil {
 		log.Fatalf("Failed to get absolute path of .env: %v", err)
 	}

@@ -43,7 +43,7 @@ func StartBot() {
 		}
 
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "")
-		msg.Text = usecase.Command(update.Message.Command())
+		msg.Text = usecase.Command(update.Message.Command(), chatID)
 		msg.ParseMode = "MarkdownV2"
 
 		if _, err := bot.Send(msg); err != nil {

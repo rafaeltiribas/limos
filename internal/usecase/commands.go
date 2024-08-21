@@ -1,14 +1,31 @@
 package usecase
 
-func Command(command string) string {
+import (
+	"github.com/rafaeltiribas/cardapio-uff/internal/models"
+	"github.com/rafaeltiribas/cardapio-uff/internal/repository"
+	"log"
+	"time"
+)
+
+func Command(command string, chatID int64) string {
 	switch command {
 	case "start":
+
+		now := time.Now()
+		user := models.User{UserID: chatID, RegisterDate: now, LastUseDate: now}
+
+		id, err := repository.InsertUser(user)
+		if err != nil {
+			log.Printf("Erro ao inserir usuário: %v", err)
+		}
+
+		log.Printf("ID: %d\n", id)
+
 		return EscapeMarkdown("Olá! Eu sou o bot do RU da UFF. Aqui estão algumas coisas que posso fazer:\n\n" +
 			"🍽️ /cardapio - Veja o cardápio do dia\n" +
 			"🕒 /horarios - Confira os horários de funcionamento\n" +
 			"❓ /ajuda - Lista todos os comandos que eu entendo\n\n" +
 			"Digite um comando para começar!")
-		//adicionar o id do usuário em um bd para ter uma contagem de usuários do bot.
 	case "ajuda":
 		return EscapeMarkdown("Aqui estão os comandos que você pode usar:\n\n" +
 			"🍽️ /cardapio - Veja o cardápio do dia\n" +
