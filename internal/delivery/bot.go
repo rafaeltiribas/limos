@@ -2,8 +2,10 @@ package delivery
 
 import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"github.com/rafaeltiribas/cardapio-uff/internal/security"
 	"github.com/rafaeltiribas/cardapio-uff/internal/usecase"
 	"log"
+	"time"
 )
 
 func StartBot() {
@@ -22,15 +24,27 @@ func StartBot() {
 	u.Timeout = 60
 
 	updates := bot.GetUpdatesChan(u)
+
+	limiter := security.NewRateLimiter(5, 5*time.Minute, 1*time.Minute)
+
 	for update := range updates {
 		if update.Message == nil {
 			continue
 		}
 
-		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "")
+		chatID := update.Message.Chat.ID
 
+		if !limiter.IsAllowed(chatID) {
+			msg := tgbotapi.NewMessage(chatID, "Você está enviando muitas mensagens. Por favor, espere um momento antes de tentar novamente.")
+			if _, err := bot.Send(msg); err != nil {
+				log.Panic(err)
+			}
+			continue
+		}
+
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "")
 		msg.Text = usecase.Command(update.Message.Command())
-		
+
 		if _, err := bot.Send(msg); err != nil {
 			log.Panic(err)
 		}
