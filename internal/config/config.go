@@ -12,4 +12,4 @@ const RequestLimit = 10
 const BanDuration = 5 * time.Minute
 const WindowDuration = 1 * time.Minute
 
-// Data Base
+// Database
