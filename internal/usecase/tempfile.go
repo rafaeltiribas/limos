@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"fmt"
+	"github.com/rafaeltiribas/cardapio-uff/internal/config"
 	"log"
 	"os"
 	"time"
@@ -15,7 +16,7 @@ func check(e error) {
 
 func CreateFile(msg string) {
 
-	file, err := os.Create("../../internal/usecase/temp/tempcardapio")
+	file, err := os.Create(config.TempFilePath)
 	check(err)
 
 	_, err = file.WriteString(msg)
@@ -25,7 +26,7 @@ func CreateFile(msg string) {
 
 	go func() {
 		fmt.Println("Timer On...")
-		timer := time.NewTimer(30 * time.Minute)
+		timer := time.NewTimer(config.ReloadRate)
 
 		<-timer.C
 		DeleteFile()
@@ -34,13 +35,13 @@ func CreateFile(msg string) {
 }
 
 func DeleteFile() {
-	err := os.Remove("../../internal/usecase/temp/tempcardapio")
+	err := os.Remove(config.TempFilePath)
 	check(err)
 
 }
 
 func GetFileContent() string {
-	response, err := os.ReadFile("../../internal/usecase/temp/tempcardapio")
+	response, err := os.ReadFile(config.TempFilePath)
 	if err != nil {
 		log.Fatal(err)
 	}

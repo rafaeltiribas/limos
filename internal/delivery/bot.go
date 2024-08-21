@@ -2,10 +2,10 @@ package delivery
 
 import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"github.com/rafaeltiribas/cardapio-uff/internal/config"
 	"github.com/rafaeltiribas/cardapio-uff/internal/security"
 	"github.com/rafaeltiribas/cardapio-uff/internal/usecase"
 	"log"
-	"time"
 )
 
 func StartBot() {
@@ -25,7 +25,7 @@ func StartBot() {
 
 	updates := bot.GetUpdatesChan(u)
 
-	limiter := security.NewRateLimiter(5, 5*time.Minute, 1*time.Minute)
+	limiter := security.NewRateLimiter(config.RequestLimit, config.BanDuration, config.WindowDuration)
 
 	for update := range updates {
 		if update.Message == nil {
