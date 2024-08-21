@@ -7,6 +7,7 @@ import (
 	"github.com/rafaeltiribas/cardapio-uff/internal/config"
 	"github.com/rafaeltiribas/cardapio-uff/internal/models"
 	"log"
+	"time"
 )
 
 func OpenConnection() (*sql.DB, error) {
@@ -76,4 +77,16 @@ func UserExists(userID int64) (bool, int64, error) {
 
 	log.Printf("User already exists: %s\n", err)
 	return true, existingID, nil
+}
+
+func NewUser(chatID int64) {
+	now := time.Now()
+	user := models.User{UserID: chatID, RegisterDate: now, LastUseDate: now}
+
+	id, err := InsertUser(user)
+	if err != nil {
+		log.Printf("Erro ao inserir usuário: %v", err)
+	}
+
+	log.Printf("ID: %d\n", id)
 }
