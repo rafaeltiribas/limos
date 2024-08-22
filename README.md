@@ -4,7 +4,7 @@
 **Limos** is a Telegram bot developed to provide UFF students with daily university restaurant menus. The bot can automatically send the menu as soon as it gets released and respond to various commands to provide helpful information across University. By the way, Limos was the goddess of starvation in Greek mythology 😅.
 
 <p align="center">
-  <img src="assets/short.png" width="700"/>
+  <img src="assets/short.png" width="1000"/>
 </p>
 
 ## Why Limos?
