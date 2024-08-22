@@ -49,3 +49,25 @@ func GetFileContent() string {
 
 	return mensagem
 }
+
+func GetOldMenuFileContent() string {
+	response, err := os.ReadFile(config.LastFilePath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	mensagem := string(response)
+
+	return mensagem
+}
+
+func CreateLatestMenuFile(msg string) {
+
+	file, err := os.Create(config.LastFilePath)
+	check(err)
+
+	_, err = file.WriteString(msg)
+	check(err)
+
+	file.Close()
+
+}

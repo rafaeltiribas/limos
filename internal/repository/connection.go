@@ -121,3 +121,38 @@ func NewUser(chatID int64) {
 
 	log.Printf("ID: %d\n", id)
 }
+
+func GetAllChatIDs() ([]int64, error) {
+	connection, err := OpenConnection()
+	if err != nil {
+		log.Printf("Open connection error: %s\n", err)
+	}
+
+	defer connection.Close()
+
+	var chatIDs []int64
+
+	sqlStatement := "SELECT user_id FROM chatuser"
+	rows, err := connection.Query(sqlStatement)
+	if err != nil {
+		log.Printf("Query error: %s\n", err)
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var chatID int64
+		if err := rows.Scan(&chatID); err != nil {
+			log.Printf("Scan error: %s\n", err)
+			return nil, err
+		}
+		chatIDs = append(chatIDs, chatID)
+	}
+
+	if err = rows.Err(); err != nil {
+		log.Printf("Rows error: %s\n", err)
+		return nil, err
+	}
+
+	return chatIDs, nil
+}

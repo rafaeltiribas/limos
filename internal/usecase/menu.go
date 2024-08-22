@@ -13,3 +13,26 @@ func Menu() string {
 
 	return mensagem
 }
+
+func MenuHasChanged() bool {
+	return true
+}
+
+func LatestMenu() string {
+	var mensagem string
+
+	cardapio := RetrieveMenu()
+	mensagem = CreateMessage(cardapio)
+	CreateLatestMenuFile(mensagem)
+
+	return mensagem
+}
+
+func GetLatestMenu() string {
+	var mensagem string
+
+	cardapio := RetrieveMenu()
+	mensagem = CreateMessage(cardapio)
+
+	return mensagem
+}

@@ -27,6 +27,8 @@ func StartBot() {
 
 	limiter := security.NewRateLimiter(config.RequestLimit, config.BanDuration, config.WindowDuration)
 
+	go usecase.SendMenuUpdatesMessages(bot)
+
 	for update := range updates {
 		if update.Message == nil {
 			continue
@@ -37,7 +39,7 @@ func StartBot() {
 		if !limiter.IsAllowed(chatID) {
 			msg := tgbotapi.NewMessage(chatID, "Você está enviando muitas mensagens. Por favor, espere um momento antes de tentar novamente.")
 			if _, err := bot.Send(msg); err != nil {
-				log.Panic(err)
+				log.Println(err)
 			}
 			continue
 		}
@@ -47,7 +49,12 @@ func StartBot() {
 		msg.ParseMode = "MarkdownV2"
 
 		if _, err := bot.Send(msg); err != nil {
-			log.Panic(err)
+			msg.Text = usecase.EscapeMarkdown(config.EmptyMenu)
+			msg.ParseMode = "MarkdownV2"
+			if _, err := bot.Send(msg); err != nil {
+				log.Println(err)
+			}
+			log.Println(err)
 		}
 	}
 }
