@@ -1,7 +1,6 @@
-
 # Limos
 
-**Limos** is a Telegram bot developed to provide UFF students with daily university restaurant menus. The bot can automatically send the menu as soon as it gets released and respond to various commands to provide helpful information across University. By the way, Limos was the goddess of starvation in Greek mythology 😅.
+**Limos** is a Telegram bot developed to provide UFF students with daily university restaurant menus. The bot can automatically send the menu as soon as it is released and respond to various commands to provide helpful information across the university. By the way, Limos was the goddess of starvation in Greek mythology 😅.
 
 <p align="center">
   <img src="assets/short.png" width="1000"/>
@@ -9,35 +8,35 @@
 
 ## Why Limos?
 
-- ⏳**Get menu of the day earlier**:
-  - 🚨 Up to THREE HOURS before the college's most popular updates channel launch time!
-  - 🙋‍♂️ Decide earlier if you want to lunch with your friends at University or go out with them!
+- ⏳**Get the menu of the day earlier**:
+    - 🚨 Up to THREE HOURS before the college's most popular updates channel launches!
+    - 🙋‍♂️ Decide earlier if you want to have lunch with your friends at the university or go out with them!
 - 👋 Not a UFF student? No problem!
-  - ✅ You can easily adopt Limos code to get the menu of any University you want! :D
-  
+    - ✅ You can easily adapt Limos' code to get the menu of any university you want! :D
+
 ## Start Using Limos!
 
 Ready to get started with **Limos**? Join the bot on Telegram by clicking the invite link below or scan the QR code to quickly open the chat!
 
-[Join Limos on Telegram](t.me/cardapiouff_bot)
+[Join Limos on Telegram](https://t.me/cardapiouff_bot)
 
 <p align="center">
   <img src="assets/qrcode.png" width="150" alt="QR Code to join Limos"/>
 </p>
 
-Just click the link or scan the QR Code and start being the first one to know university restaurant's menu everyday! 😄
+Just click the link or scan the QR code and be the first to know the university restaurant's menu every day! 😄
 
 ## Features
 
-- **Daily Menu Updates**: Automatically sends the university restaurant's menu to all students as soon as it gets released. 🚨 Up to THREE HOURS before the college's most popular updates channel launch time!
+- **Daily Menu Updates**: Automatically sends the university restaurant's menu to all students as soon as it is released. 🚨 Up to THREE HOURS before the college's most popular updates channel launches!
 - **Custom Commands**:
     - `/start`: Register as a user and start receiving daily menu updates.
     - `/ajuda`: Provides help and usage instructions.
     - `/cardapio`: Manually request the updated menu of the day.
     - `/horarios`: Get the restaurant's operating hours.
     - `/sobre`: Get the bot's description and purpose.
-    - `/contato`: Get information about how to reach me.
-- **Security Measures**: Rate limiting and input validation to ensure secure operation and avoid flood attacks.
+    - `/contato`: Get information on how to reach me.
+- **Security Measures**: Rate limiting and input validation to ensure secure operation and prevent flood attacks.
 
 ## Getting Started
 
@@ -70,7 +69,7 @@ Just click the link or scan the QR Code and start being the first one to know un
    TELEGRAM_TOKEN=your-telegram-bot-token
    \`\`\`
 
-4. Edit the config.go file with your postgres database info
+4. Edit the `config.go` file with your PostgreSQL database information.
 
 5. Run the bot:
 
@@ -83,15 +82,15 @@ Just click the link or scan the QR Code and start being the first one to know un
 - **`cmd/limos/`**: The main entry point for the bot.
 - **`internal/models/`**: Contains the data models used in the project.
 - **`internal/usecase/`**: Business logic for handling user commands and formatting menus.
-- **`internal/repository/`**: Function for create connections and interacting with the database.
+- **`internal/repository/`**: Functions for creating connections and interacting with the database.
 - **`internal/mocks/`**: Mock menu files for tests.
 - **`internal/config/`**: For application configuration, including paths and database parameters.
-- **`internal/delivery/`**: For starting the bot and receive user requests.
+- **`internal/delivery/`**: For starting the bot and receiving user requests.
 - **`pkg/rate_limit/`**: Implements rate limiting to prevent abuse of the bot's functionality.
 
 ## Usage
 
-After starting the bot, users can interact with it using the available commands. The bot will send the university restaurant's menu as soon as it gets released every day to all registered users.
+After starting the bot, users can interact with it using the available commands. The bot will send the university restaurant's menu as soon as it is released each day to all registered users.
 
 ## Contributing
 
