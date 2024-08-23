@@ -50,32 +50,32 @@ Just click the link or scan the QR code and be the first to know the university 
 
 1. Clone the repository:
 
-   \`\`\`bash
+   ```bash
    git clone https://github.com/your-username/limos.git
    cd limos
-   \`\`\`
+   ```
 
 2. Install dependencies:
 
-   \`\`\`bash
+   ```bash
    go mod tidy
-   \`\`\`
+   ```
 
 3. Set up environment variables:
 
    Create a `.env` file in the project root directory with the following content:
 
-   \`\`\`env
+   ```env
    TELEGRAM_TOKEN=your-telegram-bot-token
-   \`\`\`
+   ```
 
 4. Edit the `config.go` file with your PostgreSQL database information.
 
 5. Run the bot:
 
-   \`\`\`bash
+   ```bash
    go run main.go
-   \`\`\`
+   ```
 
 ## Project Structure
 
